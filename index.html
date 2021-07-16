@@ -19,13 +19,13 @@
 
     <!-- This section will be where the search button will go  -->
     <!-- This is where past cities that have been searched will be stored -->
-    <div class="d-flex">
+    <div class="d-flex justify-content-around">
 
-        <section class="border">
+        <section class="border w-25">
             <form>
                 <input id="citySearch" type="text" placeholder="City Name">
                 <br>
-                <button>Search</button>
+                <button id="submitBtn">Search</button>
             </form>
     
             <!-- This is the list of previous searched cities -->
@@ -37,10 +37,10 @@
     
         <!-- Here there will be two containers: One houses the current city search -->
         <!-- The second one will be the five day weather forecast -->
-        <section class="border">
+        <section class="border w-75">
     
             <!-- This is where the current searched city and all weather information is held -->
-            <div>
+            <div class="d-flex flex-column justify-content-center">
                 <br>
                 <p>City: <span id="city"></span></p>
                 <br>
@@ -55,7 +55,7 @@
     
             <!-- this is where the 5 day forecast is shown -->
             <div>
-                <h1>5-Day Forecast:</h1>
+                <h1 class="d-flex justify-content-center">5-Day Forecast:</h1>
                 <div>
     
                 </div>

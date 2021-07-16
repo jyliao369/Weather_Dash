@@ -1,13 +1,19 @@
 // use this APi to look up information on the weather based on cities
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-var APIkey = "7cc7829433b8a41fdd51019abc0a8412";
-var cityName = "london";
 var city =  document.getElementById('city');
 var mainTemp = document.getElementById('temp');
 var windSP = document.getElementById('wind');
 var humiditiyEl = document.getElementById('humid');
 var uvIndex = document.getElementById('UV');
 
+var submitEl = $('#submitBtn');
+var searchCity = $('#citySearch');
+
+var APIkey = "7cc7829433b8a41fdd51019abc0a8412";
+var cityName = "";
+var forecast = [];
+
+// This function should get the current weather information for the current day
 function getWeatherInfo() {
 
     var mainURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIkey;
@@ -49,5 +55,27 @@ function getWeatherInfo() {
     
 }
 
-getWeatherInfo();
+// This functiuon should get the 5 day forecast
+function getForecast() {
+    
+    var foreCasturl = "pi.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIkey;
+}
+
+// This even function should take what ever city that is put in the search input
+// and used that to generate the current weather for that location.
+submitEl.on('click', function() {
+    event.preventDefault();
+
+    if (searchCity.val() === ""){
+        console.log("Please input a city"); 
+    } else {
+        console.log(searchCity.val());
+        cityName = searchCity.val();
+        getWeatherInfo();
+    }
+});
+
+
+
+
 

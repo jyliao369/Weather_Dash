@@ -2,6 +2,7 @@
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 var city =  document.getElementById('city');
 var mainTemp = document.getElementById('temp');
+var dateEl = document.getElementById('dateEl');
 var windSP = document.getElementById('wind');
 var humiditiyEl = document.getElementById('humid');
 var uvIndex = document.getElementById('UV');
@@ -33,6 +34,13 @@ var start = 0;
 var length = 0;
 var img ="";
 
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+
 // This function should get the current weather information for the current day
 // it should also create a list of past searched cities
 function getWeatherInfo() {
@@ -48,10 +56,9 @@ function getWeatherInfo() {
         .then(function(data) {
             console.log(data);
 
-            console.log("testing 1 " + data.weather[0].main);
-
             city.textContent = data.name;
-            mainTemp.textContent = data.main.temp;
+            dateEl.textContent = today;
+            mainTemp.textContent = ((data.main.temp-273.15)*(9/5)+32).toFixed(2);
             windSP.textContent = data.wind.speed;
             humiditiyEl.textContent = data.main.humidity;
             
@@ -123,7 +130,6 @@ function getWeatherInfo() {
                 }
             });
         });
-    
 }
 
 // This functiuon should get the 5 day forecast
@@ -152,10 +158,9 @@ function getForecast() {
 
                 var weather = data.list[b].weather[0].main;
 
-                console.log("weather " + weather);
-
                 date.textContent = data.list[b].dt_txt;
-                temp.textContent = data.list[b].main.temp + "°K";
+                // temp.textContent = data.list[b].main.temp + "°K";
+                temp.textContent = ((data.list[b].main.temp-273.15)*(9/5)+32).toFixed(2) + "°F";
                 wind.textContent = data.list[b].wind.speed + " mph";
                 humid.textContent = data.list[b].main.humidity + "%";
 
@@ -181,9 +186,7 @@ function getForecast() {
                     iconsID.textContent = "☔";
 
                 }
-
             }
-            
             a = 0;
         });
 }
@@ -197,6 +200,8 @@ function displayCityList() {
         $(".newElement" + start).remove();
         start++;
     }
+
+    citylimit++;
 }
 
 // This even function should take what ever city that is put in the search input

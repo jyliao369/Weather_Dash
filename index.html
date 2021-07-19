@@ -6,76 +6,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- This is the link for BootStrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- This is where the header and the title of the Dashboard -->
 <!-- A current Date and Time can be added here -->
 <header class="d-flex justify-content-center">
-    <div>Weather Dashboard</div>
+    <h1>Weather Dashboard</h1>
 </header>
 
 <body>
 
     <!-- This section will be where the search button will go  -->
     <!-- This is where past cities that have been searched will be stored -->
-    <div class="d-flex justify-content-around">
+    <div class="border d-flex justify-content-around maincontainer">
 
-        <section class="border w-25">
-            <form>
+        <section class="w-25">
+            <br>
+            <div class ="d-flex justify-content-center">
+                <br>
                 <input id="citySearch" type="text" placeholder="City Name">
                 <br>
                 <button id="submitBtn">Search</button>
-            </form>
+            </div>
+
+            <br>
     
             <!-- This is the list of previous searched cities -->
-            <div>
+            <div class="d-flex flex-column" id="pastcities">
     
             </div>
+
+            <br>
     
         </section>
     
         <!-- Here there will be two containers: One houses the current city search -->
         <!-- The second one will be the five day weather forecast -->
-        <section class="border w-75">
+        <section class="d-flex flex-row w-75">
     
             <!-- This is where the current searched city and all weather information is held -->
-            <div class="d-flex flex-column justify-content-center">
-                <br>
-                <p>City: <span id="city"></span></p>
-                <br>
-                <p>Temperature: <span id="temp"></span></p>
-                <br>
-                <p>Wind: <span id="wind"></span></p>
-                <br>
-                <p>Humidity: <span id="humid"></span></p>
-                <br>
-                <p>UV Index: <span id="UV"></span></p>
+            <div class="border d-flex justify-content-center flex-column w-50">
+                <div id ="infocontainer">
+                    <p>City: <span id="city">--</span></p>
+                    <br>
+                    <p>Temperature: <span id="temp">--</span>°K</p>
+                    <br>
+                    <p>Wind: <span id="wind">--</span> mph</p>
+                    <br>
+                    <p>Humidity: <span id="humid">--</span>%</p>
+                    <br>
+                    <p>UV Index: <span id="UV">--</span></p>
+                </div>
+                
             </div>
-    
-            <!-- this is where the 5 day forecast is shown -->
-            <div>
-                <h1 class="d-flex justify-content-center">5-Day Forecast:</h1>
-                <div>
-                    <ul id="forecast1"></ul>
-                </div>
-                <div>
-                    <ul id="forecast2"></ul>
-                </div>
-                <div>
-                    <ul id="forecast3"></ul>
-                </div>
-                <div>
-                    <ul id="forecast4"></ul>
-                </div>
-                <div>
-                    <ul id="forecast5"></ul>
-                </div>
+
+            <!-- This is where can image will be placed -->
+            <div id="imgContainer">
+                <img id ="cloudImg" src="images/cloud.png" alt="Cloudy">
+                <img id ="mistImg" src="images/mist.png" alt="Misty">
+                <img id ="rainImg" src="images/rain.png" alt="Rainy">
+                <img id ="sunImg" src="images/sun.png" alt="Sunny">
+                <img id ="stormImg" src="images/wind-and-cloud.png" alt="Stormy">
             </div>
-        
     
         </section>
 
+    </div>
+
+    <!-- this is where the 5 day forecast is shown -->
+    <div class="forecastcontainer">
+        <h2 class="d-flex justify-content-center">5-Day Forecast:</h2>
+        <div class="d-flex flex-row justify-content-around">
+            <div class = "border w-25" id="forecast1">
+                <div id="forecast1">
+                    <p id ="icon1">🌡️</p>
+                </div>
+                <p>Date: <span id="date1">--</span></p>
+                <p>Temp: <span id="temp1" >--</span></p>
+                <p>Wind: <span id="wind1" >--</span></p>
+                <p>Humidity: <span id="hudmity1">--</span></p>
+            </div>
+            <div class = "border w-25" id="forecast2">
+                <div id="forecast2">
+                    <p id ="icon2">🌡️</p>
+                </div>
+                <p>Date: <span id="date2">--</span></p>
+                <p>Temp: <span id="temp2">--</span></p>
+                <p>Wind: <span id="wind2">--</span></p>
+                <p>Humidity: <span id="hudmity2">--</span></p>
+            </div>
+            <div class = "border w-25" id="forecast3">
+                <div id="forecast3">
+                    <p id ="icon3">🌡️</p>
+                </div>
+                <p>Date: <span id="date3">--</span></p>
+                <p>Temp: <span id="temp3">--</span></p>
+                <p>Wind: <span id="wind3">--</span></p>
+                <p>Humidity: <span id="hudmity3">--</span></p>
+            </div>
+            <div class = "border w-25" id="forecast4">
+                <div id="forecast4">
+                    <p id ="icon4">🌡️</p>
+                </div>
+                <p>Date: <span id="date4">--</span></p>
+                <p>Temp: <span id="temp4">--</span></p>
+                <p>Wind: <span id="wind4">--</span></p>
+                <p>Humidity: <span id="hudmity4">--</span></p>
+            </div>
+            <div class = "border w-25" id="forecast5">
+                <div id="forecast">
+                    <p id ="icon5">🌡️</p>
+                </div>
+                <p>Date: <span id="date5">--</span></p>
+                <p>Temp: <span id="temp5">--</span></p>
+                <p>Wind: <span id="wind5">--</span></p>
+                <p>Humidity: <span id="hudmity5">--</span></p>
+            </div>
+        </div>
     </div>
 
     <!-- Added link to the jQuery library -->

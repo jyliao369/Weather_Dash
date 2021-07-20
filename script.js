@@ -28,7 +28,7 @@ var windID = ["#wind1","#wind2","#wind3","#wind4","#wind5"];
 var humID = ["#hudmity1","#hudmity2","#hudmity3","#hudmity4","#hudmity5"];
 var iconID = ["#icon1","#icon2","#icon3","#icon4","#icon5"];
 
-var citylimit = 0;
+var citylimit = 1;
 var lastcity = [];
 var start = 0;
 var length = 0;
@@ -194,7 +194,9 @@ function getForecast() {
 // This function is to help generate a list of past cities
 function displayCityList() {
 
-    $('<button value = "' + cityName + '" id = "pastcities" class = "newElement' + citylimit + '">' + cityName + '</button>').prependTo($('#pastcities'));
+    // $('<button value = "' + cityName + '" id = "pastcities" class = "newElement' + citylimit + '">' + cityName + '</button>').prependTo($('#pastcities'));
+
+    $('<button onclick="reSearch(this);" class=newElement' + citylimit + ' value=' + cityName + '>' + cityName + '</button>').prependTo($('#pastcities'));
 
     if (citylimit > 10) {
         $(".newElement" + start).remove();
@@ -202,6 +204,15 @@ function displayCityList() {
     }
 
     citylimit++;
+}
+
+function reSearch(ele) {
+    
+    cityName = ele.value;
+    
+    getWeatherInfo();
+    getForecast();
+
 }
 
 // This even function should take what ever city that is put in the search input
@@ -212,7 +223,6 @@ submitEl.on('click', function() {
     if (searchCity.val() === ""){
         console.log("Please input a city");
     } else {
-        console.log(searchCity.val());
         cityName = searchCity.val();
 
         displayCityList()
@@ -222,15 +232,4 @@ submitEl.on('click', function() {
     }
 });
 
-pastCities.on('click', function() {
-    event.preventDefault();
-
-    var test = $(this).text();
-
-    var length = cityName.length;
-
-    console.log("how long the wrod is " + length);
-    console.log(test.slice(0,9));
-
-})
 
